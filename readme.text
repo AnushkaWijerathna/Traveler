@@ -1,2 +1,18 @@
 Navigation bar is created
     Sign In using github
+neon connected for database
+Set up authentication
+    Create a nextAuth function
+    create a oAuth app for github login and store them in .env.local
+    Run npm exec auth secret for Adding `AUTH_SECRET`
+Create Log out button
+Create Trips folder, inside create page.tsx
+Paste the 3 pre-built components in the UI folder 
+Create new folder, inside create page.tsx
+    Create a form for new trip
+Create model in the schema.prisma to store trip data
+    Run "npx prisma migrate dev --name trip"  to update the database and then run "npx prisma generate" to generate the client
+    To add images when creating a trip use "uploadthing.com"
+    After getting the uploadThing api key, create the folder "uploadThing" which is route folder in our api,next follow uploadthing documentation
+    Edit core.ts to match the requirenments
+    
