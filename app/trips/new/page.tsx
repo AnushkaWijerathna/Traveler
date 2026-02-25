@@ -6,10 +6,12 @@ import { createTrip } from "@/lib/actions/create-trip";
 import { cn } from "@/lib/utils";
 import { UploadButton } from "@/lib/upload-thing";
 import { useState, useTransition } from "react";
+import { error } from "node:console";
+import Image from "next/image";
 
 export default function NewTrip() {
   const [isPending, startTransition] = useTransition();
-  const [imageURL, setImageUrl] = useState<string | null>(null);
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
   return (
     <div className="max-w-lg mx-auto mt-10">
       <Card>
@@ -17,7 +19,11 @@ export default function NewTrip() {
         <CardContent>
           <form
             className="space-y-6"
+            //we send formData and Image URL to the createTrip action
             action={(formData: FormData) => {
+              if (imageUrl) {
+                formData.append("imageUrl", imageUrl);
+              }
               startTransition(() => {
                 createTrip(formData);
               });
@@ -84,16 +90,33 @@ export default function NewTrip() {
                 />
               </div>
             </div>
+            <div>
+              {/*Image preview*/}
+              <label>Trip Image</label>
 
-            <UploadButton
-              endpoint="imageUploader"
-              //runs when user upload image...when uploading is complete the user will recieve a URL of that image which is publically accesible
-              onClientUploadComplete={(res) => {
-                if (res && res[0].ufsUrl) {
-                  setImageUrl(res[0].ufsUrl);
-                }
-              }}
-            />
+              {imageUrl && (
+                <Image
+                  src={imageUrl}
+                  alt="Trip Preview"
+                  className="w-full max-h-48 object-cover rounded-md mb-4"
+                  width={300}
+                  height={200}
+                />
+              )}
+
+              <UploadButton
+                endpoint="imageUploader"
+                //runs when user upload image...when uploading is complete the user will recieve a URL of that image which is publically accesible
+                onClientUploadComplete={(res) => {
+                  if (res && res[0].ufsUrl) {
+                    setImageUrl(res[0].ufsUrl);
+                  }
+                }}
+                onUploadError={(error: Error) => {
+                  console.error("Upload Error: ", error);
+                }}
+              />
+            </div>
             <Button type="submit" disabled={isPending} className="w-full">
               {isPending ? "Creating..." : "Create Trip"}{" "}
               {/*If isPending the creating.. else create Trip */}

@@ -15,4 +15,6 @@ Create model in the schema.prisma to store trip data
     To add images when creating a trip use "uploadthing.com"
     After getting the uploadThing api key, create the folder "uploadThing" which is route folder in our api,next follow uploadthing documentation
     Edit core.ts to match the requirenments
+    Next is creating the ability to send the images when we create them
     
+Create Dashboard

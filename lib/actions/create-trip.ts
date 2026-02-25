@@ -11,8 +11,10 @@ export async function createTrip(formData: FormData) {
     throw new Error("User not authenticated");
   }
 
+  //Form data is passed through the createTrip action in new trips page.tsx
   const title = formData.get("title") as string;
   const description = formData.get("description") as string;
+  const imageUrl = formData.get("imageUrl") as string;
   const startDateStr = formData.get("startDate") as string;
   const endDateStr = formData.get("endDate") as string;
 
@@ -27,6 +29,7 @@ export async function createTrip(formData: FormData) {
     data: {
       title,
       description,
+      imageUrl,
       startDate,
       endDate,
       userId: session.user.id,
