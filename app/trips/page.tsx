@@ -72,6 +72,49 @@ export default async function TripsPage() {
           </p>
         </CardContent>
       </Card>
+      {/*Recent trips*/}
+      <div>
+        <h2 className="text-xl font-semibold mb-4">Your Recent Trips</h2>
+        {/*Checking whether trips array is empty*/}
+        {trips.length === 0 ? (
+          <Card>
+            <CardContent className="flex flex-col items-center justify-center py-8">
+              <h3 className="text-xl font-medium mb-2">No Trips Yet</h3>
+              <p className="text-center mb-4 max-w-md">
+                Start planning your trips by creating your trips
+              </p>
+              <Link href={"/trips/new"}>
+                <Button>Create Trip</Button>
+              </Link>
+            </CardContent>
+          </Card>
+        ) : (
+          //if already created trips, we will display them as a grid...Each trip as a specific card
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {/*Trps are sorted so that the most recent 6 trips will be displayed...We pass a key to avoid any warnings */}
+            {sortedTrips.slice(0, 6).map((trip, key) => (
+              <Link key={key} href={""}>
+                <Card className="h-full hover:shadow-md transform-shadow">
+                  <CardHeader>
+                    <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm line-clamp-2 mb-2">
+                      {trip.description}
+                    </p>
+
+                    <div className="text-sm">
+                      {/*Trips dates*/}
+                      {new Date(trip.startDate).toLocaleDateString()} -{" "}
+                      {new Date(trip.endDate).toLocaleDateString()}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 }

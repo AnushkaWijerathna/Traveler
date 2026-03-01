@@ -18,3 +18,6 @@ Create model in the schema.prisma to store trip data
     Next is creating the ability to send the images when we create them
     
 Create Dashboard
+Create the trips data and information page, route should be under and carry the id of the specific trip -->"/trips/:id "
+    The folder is param folder, so that it can accept the PM for the trip ID...So the folder is an extension od the trips route and it has a Param 
+    called trip ID.
