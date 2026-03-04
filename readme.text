@@ -21,3 +21,8 @@ Create Dashboard
 Create the trips data and information page, route should be under and carry the id of the specific trip -->"/trips/:id "
     The folder is param folder, so that it can accept the PM for the trip ID...So the folder is an extension od the trips route and it has a Param 
     called trip ID.
+
+Create a new database for Location
+Create new itinerary page for locations 
+    Create a client component in Ui folder to connet to the locations sever component
+    Create add location action

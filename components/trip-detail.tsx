@@ -3,12 +3,15 @@
 
 import { Trip } from "@prisma/client";
 import Image from "next/image";
-import { Calendar, Plus } from "lucide-react";
+import { Calendar, MapPin, Plus } from "lucide-react";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "./ui/tabs";
 import { useState } from "react";
 
+// interface TripWithLocation = Trip & {
+//   location: Location[];
+// }
 interface TripDetailClientProps {
   trip: Trip;
 }
@@ -98,11 +101,19 @@ export default function TripDetailClient({ trip }: TripDetailClientProps) {
                       </p>
                     </div>
                   </div>
+                  {
+                    // Display the destination/locations of the trip
+                  }
+                  <div className="flex items-start gap-2">
+                    <MapPin className="h-5 w-5 text-gray-500 mt-1" />
+                    {/*<div>
+                      <p className="font-medium text-gray-500">Destination</p>
+                      <p className="text-sm text-gray-500">
+                        {trip.locations.length} {if trip.locations.length === 1 ? "location" : "locations"}
+                      </p>
+                    </div>*/}
+                  </div>
                 </div>
-                {
-                  // Display the destination/locations of the trip
-                }
-                <div className="flex items-start gap-2"></div>
               </div>
             </div>
           </TabsContent>
