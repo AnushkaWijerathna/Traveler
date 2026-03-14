@@ -91,3 +91,5 @@ The Traveler app demonstrates a full-stack modern web application including:
   3D data visualization
 
 It provides a complete system for tracking and visualizing travel experiences.
+
+ScreenShots of the application can be found inside the public folder 
