@@ -26,3 +26,14 @@ Create a new database for Location
 Create new itinerary page for locations 
     Create a client component in Ui folder to connet to the locations sever component
     Create add location action
+    In the trips tab you can now select any trip and it's location is shown using google maps API key, you can select location mark location pan the map... Everything is working but i dont have funds to 
+        by the API key so all the codes are correct and in place but the map is not working since i don't have the api key
+
+Now create the globe folder inside app folder, inside it the page.tsx for the globe page
+    In this page a 3D world map is showing 
+    This project implements an interactive 3D travel globe using Next.js, React, and react-globe.gl to visualize visited locations around the world. It fetches trip data from an API and displays each location as a point on the globe, 
+        while also listing the countries visited in a sidebar.The globe automatically rotates for better visualization, and a loading spinner is shown while the travel data is being fetched.
+
+Challenges faced 
+    Google Map API key, without this i could'nt display the world map with pinned locations and countries visited, Also the codes work in a way that using the google API key we can get the coordinates of the location using the location name
+    Also in the globe page without the Google API key we can not get the countries visited 

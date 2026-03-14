@@ -93,7 +93,7 @@ export default async function TripsPage() {
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {/*Trps are sorted so that the most recent 6 trips will be displayed...We pass a key to avoid any warnings */}
             {sortedTrips.slice(0, 6).map((trip, key) => (
-              <Link key={key} href={""}>
+              <Link key={key} href={`/trips/${trip.id}`}>
                 <Card className="h-full hover:shadow-md transform-shadow">
                   <CardHeader>
                     <CardTitle className="line-clamp-1">{trip.title}</CardTitle>
